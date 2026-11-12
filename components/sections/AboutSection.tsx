@@ -89,7 +89,7 @@ export function AboutSection() {
                       alt={aboutPhoto.alt}
                       loading="lazy"
                       sizes="180px"
-                      className="aspect-square w-full rounded-xl object-cover object-center"
+                      className="aspect-square w-full rounded-xl object-cover object-center ring-1 ring-black/5 dark:ring-white/25"
                     />
                   </div>
                 </div>

@@ -19,10 +19,10 @@ const HERO_PHOTO = {
 };
 
 const PORTRAIT_PHOTO = {
-  src: "/images/mohan-portrait.jpg",
-  webpSrc: "/images/mohan-portrait.webp",
-  width: 366,
-  height: 366,
+  src: "/images/mohan-portrait-v2.jpg",
+  webpSrc: "/images/mohan-portrait-v2.webp",
+  width: 400,
+  height: 400,
   alt: "Portrait of Mohan A L",
 };
 
@@ -127,7 +127,7 @@ export const about = {
     "I'm a final-year B.E. Computer Science and Engineering student at Madras Institute of Technology (MIT), Anna University, Chennai (Aug 2023 – Present).",
     "I build full-stack and real-time systems across Java, Spring Boot, React, TypeScript, and PostgreSQL, with a focus on clean data models and reliable backend workflows.",
     "I reinforce core computer science fundamentals—DSA, OOP, DBMS, Operating Systems, and Computer Networks—through project engineering and consistent Java problem solving on LeetCode.",
-    "I speak Tamil natively and use English in professional settings. Away from code, I play zonal-level chess, badminton, and cricket. I also enjoy gardening, reading, and competitive programming.",
+    "I speak Tamil natively and use English in professional settings. Away from code, I play chess, badminton, and cricket. I also enjoy gardening, reading, and competitive programming.",
   ],
   education: [
     {
@@ -152,7 +152,7 @@ export const about = {
   ],
   spokenLanguages: ["Tamil (Native)", "English (Professional Working)"],
   interests: [
-    "Chess (zonal-level player)",
+    "Chess",
     "Badminton",
     "Cricket",
     "Gardening",

@@ -3,7 +3,6 @@
 import { ArrowUpRight, Check, Copy, Download } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { contactContent, featureFlags, profile } from "@/data/content";
-import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
@@ -103,13 +102,6 @@ export function ContactSection() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <ObfuscatedEmail
-                  user={profile.emailUser}
-                  domain={profile.emailDomain}
-                  variant="button"
-                  label="Email Me"
-                />
-
                 <button
                   type="button"
                   onClick={handleCopyEmail}
