@@ -9,6 +9,7 @@
 
 :root {
   --bg-page: #fafafa;
+  --bg-section-alt: #f4f4f6;
   --bg-surface: #ffffff;
   --bg-subtle: #f4f4f5;
   --border-subtle: #e4e4e7;
@@ -22,10 +23,20 @@
   --accent-soft: #eef2ff;
   --accent-border: #c7d2fe;
   --grid-line: rgba(24, 24, 27, 0.045);
+  --shadow-card: 0 1px 2px rgba(24, 24, 27, 0.04), 0 4px 12px rgba(24, 24, 27, 0.03);
+  --shadow-card-hover: 0 10px 26px rgba(67, 56, 202, 0.09), 0 2px 6px rgba(24, 24, 27, 0.05);
+  --nav-shadow: 0 8px 24px rgba(24, 24, 27, 0.06);
+  --hero-glow-a: rgba(67, 56, 202, 0.16);
+  --hero-glow-b: rgba(99, 102, 241, 0.11);
+  --chart-easy: #059669;
+  --chart-medium: #4338ca;
+  --chart-hard: #52525b;
+  --chart-track: #e4e4e7;
 }
 
 .dark {
   --bg-page: #09090b;
+  --bg-section-alt: #0d0d11;
   --bg-surface: #111114;
   --bg-subtle: #18181b;
   --border-subtle: #27272a;
@@ -39,6 +50,15 @@
   --accent-soft: rgba(99, 102, 241, 0.14);
   --accent-border: rgba(129, 140, 248, 0.35);
   --grid-line: rgba(255, 255, 255, 0.04);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 16px rgba(0, 0, 0, 0.28);
+  --shadow-card-hover: 0 12px 28px rgba(99, 102, 241, 0.14), 0 2px 8px rgba(0, 0, 0, 0.45);
+  --nav-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --hero-glow-a: rgba(129, 140, 248, 0.24);
+  --hero-glow-b: rgba(79, 70, 229, 0.18);
+  --chart-easy: #34d399;
+  --chart-medium: #818cf8;
+  --chart-hard: #a1a1aa;
+  --chart-track: #27272a;
 }
 
 html {
@@ -78,6 +98,89 @@ body {
   transform: translateY(0);
 }
 
+/* Section heading accent line animation on reveal */
+.heading-accent-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+}
+
+.reveal[data-visible="true"] .heading-accent-line {
+  transform: scaleX(1);
+}
+
+/* Hero photo ambient glow */
+@keyframes hero-glow-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.78;
+  }
+  50% {
+    transform: translate3d(4px, -6px, 0) scale(1.05);
+    opacity: 1;
+  }
+}
+
+.hero-glow-orb {
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--hero-glow-a),
+    var(--hero-glow-b) 55%,
+    transparent 75%
+  );
+  animation: hero-glow-drift 8s ease-in-out infinite;
+}
+
+/* Employer badge status dot pulse */
+@keyframes status-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.status-dot-ping {
+  animation: status-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Role swap subtle fade-slide */
+@keyframes role-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.role-fade-in {
+  animation: role-enter 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Project card filter entrance */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-card-enter {
+  animation: card-enter 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -87,6 +190,18 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .heading-accent-line {
+    transform: scaleX(1);
+    transition: none;
+  }
+
+  .hero-glow-orb,
+  .status-dot-ping,
+  .role-fade-in,
+  .project-card-enter {
+    animation: none !important;
   }
 
   *,
@@ -107,4 +222,59 @@ body {
 /* Offset anchor targets for sticky navbar */
 section[id] {
   scroll-margin-top: 5rem;
+}
+
+/* Clean print stylesheet */
+@media print {
+  @page {
+    margin: 1.2cm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11pt;
+  }
+
+  header,
+  footer,
+  .print\:hidden,
+  [data-scroll-progress],
+  [data-back-to-top] {
+    display: none !important;
+  }
+
+  section[id] {
+    border-color: #d4d4d8 !important;
+    background: #ffffff !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    break-inside: avoid-page;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .bg-tech-grid {
+    background-image: none !important;
+  }
+
+  article,
+  .rounded-2xl,
+  .rounded-xl {
+    box-shadow: none !important;
+    break-inside: avoid;
+    background: #ffffff !important;
+    border-color: #d4d4d8 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #52525b;
+    word-break: break-all;
+  }
 }

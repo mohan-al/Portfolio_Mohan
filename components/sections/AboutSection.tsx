@@ -1,6 +1,6 @@
 import { GraduationCap } from "lucide-react";
 import Image from "next/image";
-import { about, featureFlags } from "@/data/content";
+import { about, featureFlags, sectionHeadings } from "@/data/content";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -10,14 +10,14 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="border-b border-[var(--border-subtle)] py-16 sm:py-20"
+      className="border-b border-[var(--border-subtle)] bg-[var(--bg-section-alt)] py-16 sm:py-24"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
-            index="01 // ABOUT"
-            title="About"
-            subtitle="Computer Science student focused on Java backend engineering, real-time web applications, and algorithmic problem solving."
+            index={sectionHeadings.about.index}
+            title={sectionHeadings.about.title}
+            subtitle={sectionHeadings.about.subtitle}
           />
 
           <div className="grid gap-10 md:grid-cols-12 md:items-start">
@@ -39,7 +39,7 @@ export function AboutSection() {
                   {about.strengths.map((item) => (
                     <span
                       key={item}
-                      className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-2.5 py-1 font-mono text-xs text-[var(--text-primary)]"
+                      className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-2.5 py-1 font-mono text-xs text-[var(--text-primary)] shadow-[var(--shadow-card)]"
                     >
                       {item}
                     </span>
@@ -51,7 +51,7 @@ export function AboutSection() {
                 {about.education.map((edu) => (
                   <div
                     key={edu.degree}
-                    className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4"
+                    className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:shadow-[var(--shadow-card-hover)]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <GraduationCap
@@ -62,14 +62,14 @@ export function AboutSection() {
                         {edu.period}
                       </span>
                     </div>
-                    <h3 className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                    <h3 className="mt-2.5 text-sm font-semibold text-[var(--text-primary)]">
                       {edu.degree}
                     </h3>
                     <p className="mt-1 text-xs leading-relaxed text-[var(--text-secondary)]">
                       {edu.institution}
                     </p>
                     {"highlight" in edu && edu.highlight ? (
-                      <p className="mt-1.5 font-mono text-[11px] text-[var(--accent)]">
+                      <p className="mt-2 font-mono text-[11px] text-[var(--accent)]">
                         {edu.highlight}
                       </p>
                     ) : null}
@@ -79,7 +79,7 @@ export function AboutSection() {
             </div>
 
             <aside className="md:col-span-4">
-              <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5">
+              <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] transition-all duration-200 hover:border-[var(--accent-border)] hover:shadow-[var(--shadow-card-hover)]">
                 <div className="mx-auto w-[180px]">
                   <div className="rounded-2xl border-2 border-[var(--accent-border)] bg-[var(--accent-soft)] p-1.5">
                     <Image

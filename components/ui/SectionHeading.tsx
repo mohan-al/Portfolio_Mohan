@@ -10,13 +10,13 @@ export function SectionHeading({
   subtitle,
 }: SectionHeadingProps) {
   return (
-    <div className="mb-8 flex flex-col gap-2">
+    <div className="mb-10 flex flex-col gap-2">
       <div className="flex items-center gap-3">
         <span className="font-mono text-xs font-medium tracking-wider text-[var(--accent)]">
           {index}
         </span>
         <span
-          className="h-px flex-1 max-w-12 bg-[var(--border-strong)]"
+          className="heading-accent-line h-[1.5px] flex-1 max-w-16 rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent-border)]"
           aria-hidden="true"
         />
       </div>

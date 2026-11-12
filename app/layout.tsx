@@ -91,7 +91,7 @@ export default function RootLayout({
     name: profile.name,
     url: siteUrl,
     image: `${siteUrl}${profile.ogImage}`,
-    jobTitle: "Final-year Computer Science Engineering Student",
+    jobTitle: profile.headline,
     description: seo.description,
     address: {
       "@type": "PostalAddress",

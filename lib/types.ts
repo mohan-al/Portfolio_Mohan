@@ -22,6 +22,7 @@ export interface SkillItem {
 
 export interface SkillGroup {
   category: string;
+  tabLabel?: string;
   items: SkillItem[];
 }
 
@@ -73,11 +74,29 @@ export interface DsaStats {
 export interface AchievementItem {
   title: string;
   description: string;
+  date?: string;
 }
 
 export interface CertificationItem {
   title: string;
   issuer: string;
   detail?: string;
+  date?: string;
   credentialUrl?: string;
+}
+
+export interface SectionHeadingCopy {
+  index: string;
+  title: string;
+  subtitle: string;
+}
+
+export interface HeroContent {
+  studentLabel: string;
+  roles: readonly string[];
+}
+
+export interface ContactContent {
+  heading: SectionHeadingCopy;
+  availability: string;
 }

@@ -1,9 +1,12 @@
 import type {
   AchievementItem,
   CertificationItem,
+  ContactContent,
   DsaStats,
   FeatureFlags,
+  HeroContent,
   ProjectItem,
+  SectionHeadingCopy,
   SkillGroup,
 } from "@/lib/types";
 
@@ -35,10 +38,10 @@ export const profile = {
   name: "Mohan A L",
   monogram: "MAL",
   location: "Chennai, Tamil Nadu, India",
-  headline: "Final-year CSE student | Java, full-stack and real-time systems",
+  headline: "Final-year CSE student | Java, full-stack, and real-time systems",
   employerBadge: "Joining Wind River as Associate Engineer, July 2027",
   pitch:
-    "Final-year CSE student at MIT Chennai who builds real-time, full-stack systems in Java and TypeScript, and keeps DSA sharp on LeetCode.",
+    "Final-year CSE student at MIT Chennai who builds real-time, full-stack systems in Java and TypeScript and keeps DSA sharp on LeetCode.",
   resumePath: "/resume.pdf",
   emailUser: "almohan0728",
   emailDomain: "gmail.com",
@@ -50,6 +53,58 @@ export const profile = {
   },
   ogImage: "/images/mohan-hero.jpg",
 } as const;
+
+export const heroContent: HeroContent = {
+  studentLabel: "Final-year CSE student at MIT Chennai",
+  roles: [
+    "Java developer",
+    "Full-stack engineer",
+    "Real-time systems builder",
+  ],
+};
+
+export const sectionHeadings = {
+  about: {
+    index: "01 // ABOUT",
+    title: "About",
+    subtitle:
+      "Computer Science student focused on Java backend engineering, real-time web applications, and algorithmic problem solving.",
+  },
+  skills: {
+    index: "02 // SKILLS",
+    title: "Technical Skills",
+    subtitle:
+      "Grouped by stack with honest self-assessed proficiency across Strong, Working, and Learning.",
+  },
+  projects: {
+    index: "03 // PROJECTS",
+    title: "Selected Projects",
+    subtitle:
+      "End-to-end systems spanning real-time WebSocket apps, Java and Spring Boot services, full-stack tooling, and speech-to-avatar ML pipelines.",
+  },
+  dsa: {
+    index: "04 // DSA",
+    title: "Problem Solving",
+    subtitle: "Java-based DSA practice with a focus on consistency.",
+  },
+  achievements: {
+    index: "05 // ACHIEVEMENTS",
+    title: "Achievements & Certifications",
+    subtitle:
+      "Academic honors, project leadership, competitive chess, and verified coursework.",
+  },
+} satisfies Record<string, SectionHeadingCopy>;
+
+export const contactContent: ContactContent = {
+  heading: {
+    index: "06 // CONTACT",
+    title: "Let's Connect",
+    subtitle:
+      "Open to technical discussions, internships and collaborations. Email is the fastest way to reach me.",
+  },
+  availability:
+    "Open to technical discussions, internships and collaborations. Email is the fastest way to reach me.",
+};
 
 export const seo = {
   title: "Mohan A L — Software Engineer | Java, Full-Stack & Real-Time Systems",
@@ -72,7 +127,7 @@ export const about = {
     "I'm a final-year B.E. Computer Science and Engineering student at Madras Institute of Technology (MIT), Anna University, Chennai (Aug 2023 – Present).",
     "I build full-stack and real-time systems across Java, Spring Boot, React, TypeScript, and PostgreSQL, with a focus on clean data models and reliable backend workflows.",
     "I reinforce core computer science fundamentals—DSA, OOP, DBMS, Operating Systems, and Computer Networks—through project engineering and consistent Java problem solving on LeetCode.",
-    "I speak Tamil natively and use English in professional settings. Away from code, I play zonal-level chess alongside badminton, cricket, gardening, reading, and competitive programming.",
+    "I speak Tamil natively and use English in professional settings. Away from code, I play zonal-level chess, badminton, and cricket. I also enjoy gardening, reading, and competitive programming.",
   ],
   education: [
     {
@@ -165,6 +220,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "AI/ML (from project work)",
+    tabLabel: "AI/ML",
     items: [
       { name: "Whisper ASR", level: "Working" },
       { name: "Sentence-BERT", level: "Working" },
@@ -260,7 +316,7 @@ export const projects: ProjectItem[] = [
     outcomes: [
       "Developed a full-stack web app allowing users to search recipes by available ingredients.",
       "Modeled MySQL persistence with Spring Data JPA to support dietary preference filters (vegan, vegetarian, gluten-free).",
-      "Integrated the Edamam REST API for live nutrition info, ingredients, and cooking time alongside Spring Boot CRUD/search REST endpoints and Thymeleaf SSR.",
+      "Integrated the Edamam REST API for live nutrition information, ingredients, and cooking time, alongside Spring Boot CRUD/search REST endpoints and Thymeleaf SSR.",
     ],
     // TODO: Add GitHub repo URL, demo URL, and screenshot path when available
     githubUrl: "",
@@ -270,7 +326,7 @@ export const projects: ProjectItem[] = [
       problem:
         "Finding usable recipes from existing ingredients while enforcing dietary restrictions requires combining structured local data with live nutritional metadata.",
       approach:
-        "Implemented a Spring Boot MVC and REST backend with Spring Data JPA over MySQL for CRUD and dietary filters, enriched with live Edamam Recipe Search API calls and rendered through Thymeleaf templates.",
+        "Implemented a Spring Boot MVC and REST backend with Spring Data JPA over MySQL for CRUD and dietary filters, enriched it with live Edamam Recipe Search API calls, and rendered views through Thymeleaf templates.",
       architectureTitle: "Spring Boot MVC & REST Flow",
       architectureNodes: [
         { label: "Thymeleaf SSR UI", sublabel: "Ingredient & diet filters" },
@@ -305,7 +361,7 @@ export const projects: ProjectItem[] = [
       problem:
         "Creators need a single customizable bio page with rich block types, accessible custom theming, and first-party click/subscriber analytics.",
       approach:
-        "Paired a React + TypeScript + Vite frontend (split-screen studio and live mobile preview) with an Express API backed by Node's built-in SQLite engine, scrypt + HMAC cookie sessions, and client QR generation.",
+        "Paired a React + TypeScript + Vite frontend (split-screen studio and live mobile preview) with an Express API backed by Node's built-in SQLite engine, scrypt + HMAC cookie sessions, and client-side QR generation.",
       architectureTitle: "Full-Stack Studio & Analytics Architecture",
       architectureNodes: [
         { label: "React + TypeScript + Vite", sublabel: "/@handle & /studio preview" },
@@ -340,7 +396,7 @@ export const dsaStats: DsaStats = {
   lastUpdated: "Nov 2026",
   profileUrl: "https://leetcode.com/u/Mohan_0728/",
   solutionsRepoUrl: "https://github.com/mohan-al/Leetcode-Solutions",
-  focusNote: "Java-based DSA practice, with a focus on consistency.",
+  focusNote: "Java-based DSA practice with a focus on consistency.",
   chessNote: "Zonal-level chess player.",
 };
 
@@ -352,12 +408,14 @@ export const achievements: AchievementItem[] = [
   },
   {
     title: "Class 12 Academic Merit & District Cutoff Recognition",
+    date: "2023-24",
     description:
       "Scored 97.6% in Class 12 at VAARIAR Matriculation Higher Secondary School and received Thiruvallur district-level cutoff recognition (199 cutoff, 2023–24).",
   },
   {
     title: "Zonal-Level Chess Player",
-    description: "Competed and recognized at zonal-level chess competitions.",
+    description:
+      "Competed and earned recognition at zonal-level chess competitions.",
   },
 ];
 

@@ -1,7 +1,8 @@
 import { ArrowRight, Download, MapPin } from "lucide-react";
 import Image from "next/image";
-import { featureFlags, profile } from "@/data/content";
+import { featureFlags, heroContent, profile } from "@/data/content";
 import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail";
+import { RotatingRole } from "@/components/ui/RotatingRole";
 import {
   GitHubIcon,
   InstagramIcon,
@@ -15,38 +16,46 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border-b border-[var(--border-subtle)] bg-tech-grid"
+      className="relative overflow-hidden border-b border-[var(--border-subtle)] bg-[var(--bg-page)] bg-tech-grid"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-page)]/60 to-[var(--bg-page)]"
         aria-hidden="true"
       />
-      <div className="relative mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
+      <div className="relative mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-22 lg:py-28">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
             <div className="flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--text-muted)]">
-                <MapPin className="h-3.5 w-3.5 text-[var(--accent)]" aria-hidden="true" />
+                <MapPin
+                  className="h-3.5 w-3.5 text-[var(--accent)]"
+                  aria-hidden="true"
+                />
                 {profile.location}
               </span>
               {showEmployerBadge ? (
                 <span className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] px-3 py-1 font-mono text-xs font-medium text-[var(--accent)]">
                   <span
-                    className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]"
+                    className="relative flex h-2 w-2 items-center justify-center"
                     aria-hidden="true"
-                  />
+                  >
+                    <span className="status-dot-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)]" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                  </span>
                   {profile.employerBadge}
                 </span>
               ) : null}
             </div>
 
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-5xl">
+            <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
               {profile.name}
             </h1>
 
-            <p className="mt-3 font-mono text-sm font-medium text-[var(--accent)] sm:text-base">
-              {profile.headline}
+            <p className="mt-3 font-mono text-sm font-medium text-[var(--text-secondary)] sm:text-base">
+              {heroContent.studentLabel}
             </p>
+
+            <RotatingRole roles={heroContent.roles} />
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
               {profile.pitch}
@@ -56,21 +65,21 @@ export function HeroSection() {
               <a
                 href={profile.resumePath}
                 download="Mohan_A_L_Resume.pdf"
-                className="inline-flex items-center gap-2 rounded-lg bg-[var(--accent-solid)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--accent-solid-hover)]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[var(--accent-solid)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-solid-hover)] hover:shadow-md"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 Download Resume
               </a>
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-surface)] px-5 py-2.5 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-subtle)]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-surface)] px-5 py-2.5 text-sm font-medium text-[var(--text-primary)] shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:bg-[var(--bg-subtle)]"
               >
                 View Projects
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-lg border border-[var(--border-subtle)] bg-transparent px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
+                className="inline-flex items-center rounded-xl border border-[var(--border-subtle)] bg-transparent px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
               >
                 Contact
               </a>
@@ -83,7 +92,7 @@ export function HeroSection() {
                 rel="noopener noreferrer"
                 aria-label="GitHub profile"
                 title="GitHub"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
               >
                 <GitHubIcon className="h-4 w-4" />
               </a>
@@ -93,7 +102,7 @@ export function HeroSection() {
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
                 title="LinkedIn"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
               >
                 <LinkedInIcon className="h-4 w-4" />
               </a>
@@ -103,7 +112,7 @@ export function HeroSection() {
                 rel="noopener noreferrer"
                 aria-label="LeetCode profile"
                 title="LeetCode"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
               >
                 <LeetCodeIcon className="h-4 w-4" />
               </a>
@@ -114,7 +123,7 @@ export function HeroSection() {
                   rel="noopener noreferrer"
                   aria-label="Instagram profile"
                   title="Instagram"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
                 >
                   <InstagramIcon className="h-4 w-4" />
                 </a>
@@ -130,10 +139,14 @@ export function HeroSection() {
           <div className="lg:col-span-5">
             <div className="relative mx-auto max-w-[300px] sm:max-w-[340px] lg:ml-auto lg:mr-0">
               <div
+                className="hero-glow-orb pointer-events-none absolute -inset-6 rounded-[2rem] blur-2xl"
+                aria-hidden="true"
+              />
+              <div
                 className="absolute -inset-2 rounded-3xl border border-[var(--accent-border)] bg-[var(--accent-soft)]/50"
                 aria-hidden="true"
               />
-              <div className="relative overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-white p-1.5 shadow-sm dark:bg-zinc-900">
+              <div className="relative overflow-hidden rounded-2xl border border-[var(--border-strong)] bg-[var(--bg-surface)] p-1.5 shadow-[var(--shadow-card)]">
                 <Image
                   src={heroPhoto.webpSrc}
                   width={heroPhoto.width}

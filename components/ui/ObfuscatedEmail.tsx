@@ -6,7 +6,8 @@ import { useState, useSyncExternalStore } from "react";
 interface ObfuscatedEmailProps {
   user: string;
   domain: string;
-  variant?: "icon" | "card";
+  variant?: "icon" | "button" | "card";
+  label?: string;
 }
 
 const noopSubscribe = () => () => {};
@@ -15,6 +16,7 @@ export function ObfuscatedEmail({
   user,
   domain,
   variant = "icon",
+  label = "Send Email",
 }: ObfuscatedEmailProps) {
   const address = useSyncExternalStore(
     noopSubscribe,
@@ -51,9 +53,27 @@ export function ObfuscatedEmail({
         }}
         aria-label="Send email to Mohan A L"
         title="Email Mohan A L"
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent-border)] hover:text-[var(--accent)]"
       >
         <Mail className="h-4 w-4" aria-hidden="true" />
+      </a>
+    );
+  }
+
+  if (variant === "button") {
+    return (
+      <a
+        href={address ? `mailto:${address}` : "#contact"}
+        onClick={(e) => {
+          if (!address) {
+            e.preventDefault();
+            handleOpenMail();
+          }
+        }}
+        className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--accent-solid)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-solid-hover)] hover:shadow-md"
+      >
+        <Mail className="h-4 w-4" aria-hidden="true" />
+        <span>{label}</span>
       </a>
     );
   }
